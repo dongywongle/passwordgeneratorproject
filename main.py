@@ -1,32 +1,14 @@
 '''
-WIP basic password generator, kind of improvising as i go along in rgeards to functionality and goals of the project
-only just within the past few weeks feeling comfortable enough to attempt solo projects.
+did some research and tried a different method than i was using, this is using secrets module and is, afaik,
+more secure. still going to look to add complexity soon.
 '''
 
-import random
+import string
+import secrets
 
-def main():
+reqlen = int(input("Please enter your desired password length (1-10 characters): "))
 
-        def generateletter():
-            letter = random.randint(97,126)
-            return chr(letter)
+charpool = string.ascii_letters + string.punctuation
+password = "".join(secrets.choice(charpool) for i in range(reqlen))
 
-        def generatespecialchar():
-            char_ranges = [random.randint(32,47),
-                           random.randint(123, 126),
-                           random.randint(58, 64),
-                           random.randint(91, 96)]
-            return chr(random.choice(char_ranges))
-
-        def combinetopw():
-            pass
-
-        print(generatespecialchar())
-        print(generateletter().upper())
-
-
-
-
-
-if __name__ == ("__main__"):
-    main()
+print(password)
